@@ -1,0 +1,185 @@
+/*reset css*/
+body,div,h1,h2,h3,h4,h5,h6,form,input,table,th,tr,td,ul,ol,li,a,img,button,select,option,b,i,strong,textarea,br,dl,dt,dd,em,iframe,label,link,p,link,meta,span,style{padding:0;margin:0;}
+a{text-decoration:none;}
+a img{border:0;}/*去除a链接里img默认的边框*/
+ul,ol{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+input{outline: none;}
+button{border:none;}
+/*end reset css*/
+
+/*浮动+定位+位置*/
+.fl{float:left !important;}
+.fr{float:right !important;}
+.mga{margin:0 auto !important;}
+.mt14{margin-top:14px !important;}
+.mt22{margin-top:22px !important;}
+.mt25{margin-top:25px !important;}
+.mb2{margin-bottom:2px !important;}
+.mb3{margin-bottom:3px !important;}
+.mb4{margin-bottom:4px !important;}
+.mb10{margin-bottom:10px !important;}
+.mb12{margin-bottom:12px !important;}
+.mb13{margin-bottom:13px !important;}
+.mb18{margin-bottom:18px !important;}
+.mb26{margin-bottom:26px !important;}
+.mb40{margin-bottom:40px !important;}
+.ml14{margin-left:14px !important;}
+.ml15{margin-left:15px !important;}
+.ml20{margin-left:20px !important;}
+.ml25{margin-left:25px !important;}
+.ml30{margin-left:30px !important;}
+.mr0{margin-right:0 !important;}
+.mr4{margin-right:4px !important;}
+.mr5{margin-right:5px !important;}
+.mr10{margin-right:10px !important;}
+.mr12{margin-right:12px !important;}
+.mr15{margin-right:15px !important;}
+.mr20{margin-right:20px !important;}
+.mr30{margin-right:30px !important;}
+.mr63{margin-right:63px !important;}
+.pd10{padding:10px !important;}
+.pb15{padding-bottom:15px !important;}
+.psr{position:relative !important;}
+.psa{position:absolute !important;}
+.psf{position:fixed !important;}
+
+/*清除浮动*/
+.clearfix:after{display:block !important;content:"" !important;visibility:hidden !important;clear:both !important;}
+.clearfix{zoom:1 !important;}
+.clear{clear:both !important;}
+.ofh{overflow:hidden !important;}
+.ofa{overflow:auto !important;}
+
+/*行+块+行块转换*/
+.db{display:block !important;}
+.dn{display:none !important;}
+.dib{display:inline-block !important;}
+
+/*背景颜色*/
+.bg3{background-color:#333 !important;}
+.bg6{background-color:#666 !important;}
+.bg9{background-color:#999 !important;}
+.bgf{background-color:#fff !important;}
+.bg42{background-color:#424242 !important;}
+.bgf67{background-color:#FF6700 !important;}
+.bg058{background-color:#0585be !important;}
+/*字体大小*/
+.fs40{font-size:40px !important;}
+.fs30{font-size:30px !important;}
+.fs28{font-size:28px !important;}
+.fs26{font-size:26px !important;}
+.fs24{font-size:24px !important;}
+.fs22{font-size:22px !important;}
+.fs20{font-size:20px !important;}
+.fs18{font-size:18px !important;}
+.fs16{font-size:16px !important;}
+.fs15{font-size:15px !important;}
+.fs14{font-size:14px !important;}
+.fs13{font-size:13px !important;}
+.fs12{font-size:12px !important;}
+
+/*图标字体大小*/
+.fs32{font-size:32px !important;}
+.fs48{font-size:48px !important;}
+.fs64{font-size:64px !important;}
+.fs96{font-size:96px !important;}
+.fs128{font-size:128px !important;}
+
+/*字体颜色和字体粗细*/
+.clf{color:#fff !important;}
+.cl0{color:#000 !important;}
+.cl23{color:#232323 !important;}
+.cl46{color:#464646 !important;}
+.cl3{color:#333 !important;}
+.cl6{color:#666 !important;}
+.cl9{color:#999 !important;}
+.cle{color:#eee !important;}
+.cle5{color:#e5e5e5 !important;}
+.clec{color:#ececec !important;}
+.clb{color:#bbb !important;}
+.clb0{color:#b0b0b0 !important;}
+.clc{color:#ccc !important;}
+.cl21{color:#212121 !important;}
+.cl3c{color:#3c3c3c !important;}
+.cl6c{color:#6c6c6c !important;}
+.cl42{color:#424242 !important;}
+.cla4b{color:#a4b8c4 !important;}
+.clac7{color:#ac7d6b !important;}
+.cl06a7{color:#00a67c !important;}
+.clf60{color:#f60 !important;}
+.clf6709{color:#ff6709 !important;}
+.clf670{color:#ff6700 !important;}
+.clr{color:red !important;}
+.fwb{font-weight:bold !important;}
+.fw1{font-weight:100 !important;}
+.fw2{font-weight:200 !important;}
+.fw4{font-weight:400 !important;}
+
+/*文本缩进和换行*/
+.ti2e{text-indent:2em !important;}
+.ti3e{text-indent:3em !important;}
+.ti10{text-indent:10px !important;}
+.tac{text-align:center !important;}
+.tal{text-align:left !important;}
+.tar{text-align:right !important;}
+.vam{vertical-align:middle !important;}
+.toc{text-overflow:clip !important;}
+.toe{text-overflow:ellipsis !important;}
+.wsn{white-space:nowrap !important;}
+.wsp{white-space:pre !important;}
+.wspl{white-space:pre-line !important;}
+.wspw{white-space:pre-wrap !important;}
+
+/*边框圆角*/
+.br3{border-radius:3px !important;}
+.br7{border-radius:7px !important;}
+.br10{border-radius:10px !important;}
+.br12{border-radius:12px !important;}
+.br15{border-radius:15px !important;}
+.br20{border-radius:20px !important;}
+.br50{border-radius:50% !important;}
+
+/*透明度和z-index*/
+.oc0{opacity:0 !important;}
+.oc05{opacity:0.5 !important;}
+.oc09{opacity:0.9 !important;}
+.oc1{opacity:1 !important;}
+.zi-1{z-index:-1 !important;}
+.zi0{z-index:0 !important;}
+.zi1{z-index:1 !important;}
+.zi7{z-index:7 !important;}
+.zi10{z-index:10 !important;}
+.zi15{z-index:15 !important;}
+
+/*transition过渡*/
+.ts1{transition:all 1s !important;}
+.ts05{transition:all 0.5s !important;}
+.ts04{transition:all 0.4s !important;}
+.ts025{transition:all 0.25s !important;}
+.ts02{transition:all 0.2s !important;}
+.ts2{transition:all 2s !important;}
+
+.ts1l{transition:all 1s linear !important;}
+.ts05l{transition:all 0.5s linear !important;}
+.ts04l{transition:all 0.4s linear !important;}
+.ts025l{transition:all 0.25s linear !important;}
+.ts02l{transition:all 0.2s linear !important;}
+
+.ts1ei{transition:all 1s ease-in !important;}
+.ts05ei{transition:all 0.5s ease-in !important;}
+.ts04ei{transition:all 0.4s ease-in !important;}
+.ts025ei{transition:all 0.25s ease-in !important;}
+.ts02ei{transition:all 0.2s ease-in !important;}
+
+.ts1eo{transition:all 1s ease-out !important;}
+.ts05eo{transition:all 0.5s ease-out !important;}
+.ts04eo{transition:all 0.4s ease-out !important;}
+.ts025eo{transition:all 0.25s ease-out !important;}
+.ts02eo{transition:all 0.2s ease-out !important;}
+
+/*鼠标样式*/
+.csp{cursor:pointer !important;}
+.csd{cursor:default !important;}
+.csm{cursor:move !important;}
+
