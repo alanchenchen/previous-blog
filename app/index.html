@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>NOW</title>
+    <link rel="stylesheet" type="text/css" href="css/page.css"/>
+</head>
+<body>
+	<header>
+		<a href=""> < </a>
+		HOT EVENTS
+	</header>
+	<nav>
+		<a href="" class="active">NOW</a>
+		<a href="">COMING</a>
+		<a href="">ENDED</a>
+		<a href="">MY EVENTS</a>
+	</nav>
+	<div id="container">
+		<div class="list">
+			<!--now-->
+			<div class="wrap">
+				<section>
+					<a href="" class="image">
+						<img src="img/banner01.jpg" alt="" />
+						<span class="label">
+							<span class="now_dot"></span>
+							<h3>HOT</h3>
+						</span>
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">4/21-5/21</span>
+				</section>
+				<section>
+					<a href="" class="image">
+						<img src="img/banner02.jpg" alt="" />
+						<span class="label">
+							<span class="now_dot"></span>
+							<h3>HOT</h3>
+						</span>
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">4/21-5/21</span>
+				</section>
+				<section>
+					<a href="" class="image">
+						<img src="img/banner03.jpg" alt="" />
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">4/21-5/21</span>
+				</section>
+			</div>
+			<!--coming-->
+			<div class="wrap">
+				<section>
+					<a href="" class="image">
+						<img src="img/banner01.jpg" alt="" />
+						<span class="label">
+							<span class="come_dot"></span>
+							<h3>HOT</h3>
+						</span>
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">4/21-5/21</span>
+				</section>
+				<section>
+					<a href="" class="image">
+						<img src="img/banner02.jpg" alt="" />
+						<span class="label">
+							<span class="come_dot"></span>
+							<h3>Lucky Draw</h3>
+						</span>
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">4/21-5/21</span>
+				</section>
+				<section>
+					<a href="" class="image">
+						<img src="img/banner03.jpg" alt="" />
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">4/21-5/21</span>
+				</section>
+			</div>
+			<!--ended-->
+			<div class="wrap">
+				<section>
+					<a href="" class="image">
+						<img src="img/banner01.jpg" alt="" />
+						<span class="label">
+							<span class="end_dot"></span>
+							<h3>HOT</h3>
+						</span>
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">ended</span>
+				</section>
+				<section>
+					<a href="" class="image">
+						<img src="img/banner02.jpg" alt="" />
+						<span class="label">
+							<span class="end_dot"></span>
+							<h3>Lucky Draw</h3>
+						</span>
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">ended</span>
+				</section>
+				<section>
+					<a href="" class="image">
+						<img src="img/banner03.jpg" alt="" />
+					</a>
+					<h3 class="title">Gomeplus hot event title</h3>
+					<span class="date">ended</span>
+				</section>
+			</div>
+			<div class="wrap">
+				<section>
+					<img class="full_img" src="img/My-Events_03.png"/>
+					<span id="btn"></span>
+				</section>
+			</div>
+		</div>
+	</div>
+	<div id="hide">
+		<div class="cont">
+			<header>
+				<h3 class="cl1">HOW IT WORKS LOGING TO GOMEPLUS</h3>
+				<span class="close"></span>
+				<p class="cl2">Join Free or Login to Gomeplus Click on the Grab Deal button on this page.You will be re-directed to filpkart.Now buy the (name) as</p>
+			</header>
+			<section>
+				<h4 class="cl2">Three Friends have been invited</h4>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	
+	<script src="js/slide.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var html=document.documentElement || document.body;
+			var htmlW=html.getBoundingClientRect().width;
+			var line=document.getElementById("line");
+			var btn=document.getElementById("btn");
+			html.style.fontSize=htmlW/15+"px";
+			new mbanner({
+				dom:document.getElementById("container"),
+				callback:function(index){
+					var nav=document.getElementsByTagName("nav")[0].children;
+					var len=nav.length;
+					for(var i=0;i<len;i++){
+						nav[i].className="";
+					}
+					nav[index].className+=" active";
+				}
+			})
+			btn.addEventListener("touchstart",function(){
+				alert("Welcome to join us")
+			})
+		}
+	</script>
+</body>
+</html>
