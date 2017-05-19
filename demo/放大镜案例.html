@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片放大镜展示</title>
+		<style>
+			::-webkit-scrollbar {
+			  width: 9px;
+			  height: 9px;
+			}
+			::-webkit-scrollbar-track-piece:no-button {}
+			::-webkit-scrollbar-thumb {
+			  background-color: #3994EF;
+			  border-radius: 3px;
+			}
+			::-webkit-scrollbar-thumb:active {
+			  background-color:#0566a9;
+			}
+			::-webkit-scrollbar-button:vertical { width: 9px; }
+			::-webkit-scrollbar-button:horizontal { width: 9px; }
+			*{padding:0;margin:0;}
+			#cont{width:1200px;margin:10px auto;}
+			#pic{position: relative;width:600px;height:337px;}
+			#spic{width:100%;height:100%;}
+			#scan{position: absolute;display:none;width:180px;height:180px;cursor: move;background:rgba(6,11,249,0.18);}
+			#bigPic{position: absolute;top:0;left:620px;display:none;width:95%;height:100%;box-shadow:0 0 30px #333;background:url(images/bpic1.jpg);}
+			ul{margin-top:20px;list-style: none;height:94px;}
+			li{float: left;border: 3px solid transparent;margin-right: 5px;}
+			li img{width:113px;height:84px;}
+			li:hover{border-color: red;}
+			p{width:90%;border:2px dotted #333;line-height:25px;background:#eee;color:red;padding:25px;margin-top: 20px;}
+		</style>
+	</head>
+	<body>
+		<div id="cont">
+			<div id="pic">
+				<img src="images/spic1.jpg" id="spic" />
+				<div id="scan"></div>
+				<div id="bigPic"></div>
+			</div>
+			<ul id="ulDom">
+				<li><img src="images/spic1.jpg" /></li>
+				<li><img src="images/spic2.png" /></li>
+				<li><img src="images/spic3.png" /></li>
+				<li><img src="images/spic4.png" /></li>
+				<li><img src="images/spic5.png" /></li>
+			</ul>
+			<p>
+				思路分析：<br  />
+				1.放大镜的原理是让scan阴影层移动时右侧的bpic的背景图位置跟随移动，且同步，根据两者移动的距离百分比相等来实现<br  />
+				2.鼠标移动时scan跟随移动，且有边界，而且鼠标永远在scan中心，注意出现滚动条时不能直接用clientX和clinetY，要用pageX和pageY或者clientX+scrollLeft和clientY+scrollTop来兼容
+			</p>
+		</div>
+		<script type="text/javascript">
+			var li=document.getElementById("ulDom").getElementsByTagName("img");
+			var cont=document.getElementById("cont");
+			var scan=document.getElementById("scan");
+			var pic=document.getElementById("pic");
+			var spic=document.getElementById("spic");
+			var bigPic=document.getElementById("bigPic");
+			function getAttr(obj,attr){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+			}
+			for (var i=0;i<li.length;i++) {
+				li[i].onmouseenter=function(){
+					var src=this.src;
+					spic.src=src;
+					var nSrc=src.replace("spic","bpic")//直接用string的replace()方法替换名称
+					bigPic.style.background="url("+nSrc+")";//注意要拼接引号，这样nSrc才是变量
+				}
+			}
+			pic.onmousemove=function(e){
+				var e=e || event;
+				//让鼠标在pic图片层上移动使阴影层scan跟着移动，而鼠标永远在scan中心
+				var x=e.pageX;
+				var y=e.pageY;
+				var contL=cont.offsetLeft;
+				var contT=cont.offsetTop;
+				var scanW=parseInt(getAttr(scan,"width"))/2;
+				var scanH=parseInt(getAttr(scan,"height"))/2;
+				var scanleft=x-contL-scanW;
+				var scantop=y-contT-scanH;
+				//使scan的边界控制在pic的范围内
+				var maxL=parseInt(getAttr(pic,"width"))-scanW*2;
+				var maxT=parseInt(getAttr(pic,"height"))-scanH*2;
+				if(scanleft<=0)scanleft=0;
+				if(scanleft>=maxL)scanleft=maxL;
+				if(scantop<=0)scantop=0;
+				if(scantop>=maxT)scantop=maxT;
+				//通过控制scan的定位坐标来实现移动
+				scan.style.left=scanleft+"px";
+				scan.style.top=scantop+"px";
+				//放大镜的原理是scan移动的地方，使bpic的背景图片位置跟着改变，而两者间移动距离的占总距离的百分比是相同的
+				var moveX=(scanleft/maxL).toFixed(2)*100+"%"
+				var moveY=(scantop/maxT).toFixed(2)*100+"%"
+//				console.log(moveX+"==="+moveY);
+				bigPic.style.backgroundPosition=moveX+moveY;
+			}
+			pic.onmouseenter=function(){
+				scan.style.display="block";
+				bigPic.style.display="block";
+			}
+			pic.onmouseleave=function(){
+				scan.style.display="none";
+				bigPic.style.display="none";
+			}
+		</script>
+	</body>
+</html>

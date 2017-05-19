@@ -1,0 +1,8 @@
+/*container左边部分 banner*/
+#container .c_left #c_picDom{width:78%;height:29rem;border:6px solid rgba(255,255,255,0.9);box-shadow:0 0 25px #444;}
+.c_left #c_picDom a,.c_left #c_picDom img{width:100%;height:29rem;}
+.c_left #c_picDom ul{width:100%;margin-top:-29rem;}
+.c_left #c_picNum{width:20%;}
+.c_left #c_picNum .on{border-color:#a11d71;}
+.c_left #c_picNum li{margin-bottom:0.5rem;border:4px solid #fff;border-radius:10px;height:5rem;}
+.c_left #c_picNum a,.c_left #c_picNum img{width:100%;height:100%;border-radius:9px;}

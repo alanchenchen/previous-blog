@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>section note about JS</title>
+		<style type="text/css">
+			/*::-webkit-scrollbar{width: 0;}*/
+			/*设置滚动条样式*/
+			::-webkit-scrollbar {
+			  width: 9px;
+			  height: 9px;
+			}
+			::-webkit-scrollbar-track-piece:no-button {}
+			::-webkit-scrollbar-thumb {
+			  background-color: #3994EF;
+			  border-radius: 3px;
+			}
+			::-webkit-scrollbar-thumb:active {
+			  background-color:#0566a9;
+			}
+			::-webkit-scrollbar-button:vertical { width: 9px; }
+			::-webkit-scrollbar-button:horizontal { width: 9px; }
+			*{padding: 0;margin: 0;}
+			#forms{width:500px;margin:40px auto;line-height:40px;}
+			textarea{width: 300px;height: 150px;}
+			input[type="submit"]{display:block;width:80px;height: 35px;text-align: center;margin:0 100px;}
+			input[type="checkbox"]{vertical-align: middle;margin-right: 10px;}
+			h4{width:30%;height:30px;line-height:30px;border:1px solid red;background:#EEEEEE;opacity:0;}
+		</style>
+	</head>
+	<body>
+		<form action="xxx.php" method="post" id="forms" onsubmit="return userSave()">
+			<h4 id="tip"></h4>
+			用户名：<input type="text" name="userName" /><br />
+			密码：<input type="password" name="userPass" /><br />
+			性别：<br />
+			<label>男<input type="radio" name="sex" value="男" /></label>
+			<label>女<input type="radio" name="sex" value="女" /></label><br />
+			擅长：<br />
+			<label>写java<input type="checkbox" name="skill" value="写java" /></label>
+			<label>写php<input type="checkbox" name="skill" value="写php" /></label>
+			<label>写前端静态<input type="checkbox" name="skill" value="写前端静态" /></label>
+			<label>写前端特效<input type="checkbox" name="skill" value="写前端特效" /></label><br />
+			自我描述：<br />
+			<textarea name="shortInfo"></textarea>
+			<input type="submit" value="注 册" />
+		<script type="text/javascript">
+			function userSave(){
+				function $(id){
+					return document.getElementById(id)
+				}
+				function getValue(obj){
+					var arr=[];
+					for (var i=0;i<obj.length;i++){
+						if(obj[i].checked){
+						 arr.push(obj[i].value);
+						}
+					}
+					return arr;
+				}
+				var forms=$("forms"),
+					userName=forms.userName,//只有在form表单里才能用对象属性来获取元素！
+					userPass=forms.userPass,
+					sex=forms.sex,
+					skill=forms.skill,
+					shortInfo=forms.shortInfo;
+				var tip=$("tip");
+				if(!userName.value){
+					userName.focus();
+					tip.innerHTML="请输入用户名";
+					tip.style.opacity=1;
+					return false;//一旦成立，函数停止，不再接着运行
+				}
+				if(!userPass.value){
+					userPass.focus();
+					tip.innerHTML="请输入密码";
+					tip.style.opacity=1;
+					return false;//一旦成立，函数停止，不再接着运行
+				}
+				if(getValue(sex).length!=1){
+					tip.innerHTML="请选择性别";
+					tip.style.opacity=1;
+					return false;//一旦成立，函数停止，不再接着运行
+				}
+				if(getValue(skill).length<2){
+					tip.innerHTML="请至少选择两种特长";
+					tip.style.opacity=1;
+					return false;//一旦成立，函数停止，不再接着运行
+				}
+				if(!shortInfo.value){
+					shortInfo.focus();
+					tip.innerHTML="请输入个人简介";
+					tip.style.opacity=1;
+					return false;//一旦成立，函数停止，不再接着运行
+				}
+				
+				var json={
+					name:userName.value,
+					pass:userPass.value,
+					sex:getValue(sex),
+					skill:getValue(skill),
+					shortInfo:shortInfo.value}
+				tip.style.opacity=1;
+				tip.style.width="100%";
+				tip.style.height=60+"px";
+				tip.innerHTML=JSON.stringify(json);
+				return false;
+			}
+		</script>
+	</body>
+</html>

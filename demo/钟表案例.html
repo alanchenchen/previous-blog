@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Dong!Dong!Dong!</title>
+  <style type="text/css">
+  	::-webkit-scrollbar {
+	  width: 9px;
+	  height: 9px;
+	}
+	::-webkit-scrollbar-track-piece:no-button {}
+	::-webkit-scrollbar-thumb {
+	  background-color: #3994EF;
+	  border-radius: 3px;
+	}
+	::-webkit-scrollbar-thumb:active {
+	  background-color:#0566a9;
+	}
+	::-webkit-scrollbar-button:vertical { width: 9px; }
+	::-webkit-scrollbar-button:horizontal { width: 9px; }
+	*{padding:0;margin:0;}
+	#bg{
+		position:relative;
+		width:302px;
+		height:302px;
+		margin:10px auto 40px;
+		border-radius:50%;
+		background:url(images/clockBg.png) rgba(0,0,0,0.05);}
+	#hours,#minutes,#seconds{
+		position:absolute;
+		transform-origin: bottom;}/*以底部作为过渡中心*/
+	#hours{
+		top:100px;
+		left:148px;
+		width:5px;
+		height:50px;
+		background:#fff;}
+	#minutes{
+		top:70px;
+		left:149px;
+		width:3px;
+		height:80px;
+		background:#009a61;}
+	#seconds{
+		top:40px;
+		left:150px;
+		width:1px;
+		height:110px;
+		background:#ff9800;}
+	#timer,#endTime{
+		margin-top:10px;
+		font-size:30px;
+		color:#fff;
+		text-align:center;}
+	p{width:89%;margin:20px auto;border:2px dotted #333;line-height:25px;background:#eee;color:red;padding:25px;margin-top: 20px;}
+  </style>
+ </head>
+ <body>
+	<div id="bg">
+		<div id="hours"></div>
+		<div id="minutes"></div>
+		<div id="seconds"></div>
+	</div>
+	<div id="timer"></div>
+	<div id="endTime"></div>
+	<p>
+		思路分析：<br  />
+		1.指针的转动需要用css3里的transform：rotate(xdeg);属性，而且必须设置transform-origin为bottom，这样指针才会围绕底部转动，默认以中心转动<br  />
+		2.需要用new Date()对象来获取时间，还需要给一个定时器，每秒执行获取一次<br  />
+		3.指针转动的角度问题需要换算，小学数学问题
+	</p>
+	<script type="text/javascript">
+		//封装一个获取id的函数。通过传入参数来解决
+		function $(id){
+			return document.getElementById(id)
+			}
+		var hours=$("hours"),
+			minutes=$("minutes"),
+			seconds=$("seconds"),
+			timer=$("timer"),
+			endTime=$("endTime");
+		var defDate=new Date("2017/10/1");//定义一个date对象为2017/10/1
+		//添加循环定时器是为了每隔1s获取一次当前时间，不加定时器则只会在页面加完获取一次！
+		setInterval(function(){
+			var date=new Date();
+			var h=date.getHours(),
+				m=date.getMinutes(),
+				s=date.getSeconds(),
+				dates=date.toLocaleString(),
+				da=date.getDay();
+			var showDay=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+			//console.log(showDay[da-1]);用数组来对应获取到的周数！！
+			//初中数学比例问题！！关于时间和指针转动的角度换算。
+			var	sdeg=s*6,
+				mdeg=m*6+s/60*6,
+				hdeg=h*30+m/60*30+s/3600*30;
+			hours.style.transform="rotate("+hdeg+"deg)";
+			minutes.style.transform="rotate("+mdeg+"deg)";
+			seconds.style.transform="rotate("+sdeg+"deg)";/*用引号拼接成字符串是因为sdeg获取的是个变量。而deg前面需要一个定值！*/
+			//console.log(h+"时"+m+"分"+s+"秒");
+			timer.innerHTML="<b style='color:#000'>你现在所处星球的时间是："+dates+"&nbsp;&nbsp;"+showDay[da]+"</b>";
+			/*function n(num){return num<10?"0"+num:num}封装一个传参函数来避免小于10的数字变为1位数!*/
+			var dch=(+defDate)-(+date),//取所有的毫秒数
+				days=parseInt(dch/1000/60/60/24);//pasrseInt是取整数！
+			endTime.innerHTML="<b style='color:#000'>距离2017年十一还有<em style='color:red'>"+days+"</em>天</b>";
+	
+		},1000)
+	</script>
+ </body>
+</html>

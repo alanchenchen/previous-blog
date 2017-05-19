@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_zg09huwdn71zto6r.css" />
+  <style type="text/css">
+	*{padding:0;margin:0;font-family:"microsoft yahei";}
+	#header{
+		width:640px;
+		list-style:none;
+		margin:50px auto;
+		padding:30px;
+		font-size:15px;
+		color:#000;
+		overflow:hidden;}
+	#header li{
+		float:left;
+		position:relative;
+		margin-right:20px;
+		margin-top:50px;
+		width:200px;
+		height:200px;
+		background:#ccc;
+		transition:all 1s;}
+	#header li:nth-child(3n){
+		margin-right:0;}
+	#header .li_1{
+		background:url(img/course1.jpg) -31px -115px no-repeat;}
+	#header .li_2{
+		background:url(img/course2.jpg) -14px -147px no-repeat;}
+	#header .li_3{
+		background:url(img/course3.jpg) 0 -25px no-repeat;}
+	#header .cont{
+		position:absolute;/*只能用定位，为了使p的高度变化时往上拉长！用margin，p的高度会往下方拉长*/
+		bottom:0; 
+		padding:10px;/*不能给固定高度，不然父级盒子会被撑开！p的高度会往下方拉长*/
+		width:180px;
+		background:rgba(249,249,249,0.9);}/*背景透明色*/
+	#header p{
+		margin-bottom:4px;
+		height:49px;
+		/*用元素溢出隐藏来隐藏超出的文本！*/
+		overflow:hidden;
+		transition:all 500ms;}
+	/* #header .li_0 p{
+		height:0;}
+	#header .li_0:hover p{  让li_0的文本从无到有！
+		height:120px;} */
+	#header li:hover{
+		box-shadow:0 0 30px #282828;/*li鼠标滑动盒子阴影变深*/
+		transform:translate(0,-15px);}/*li鼠标滑动，位移效果*/
+	#header .li_0:hover{
+		transform:translate(0,0);}
+	#header li:hover p{
+		height:120px;}/*li鼠标滑动p高度变高*/
+	#header span{
+		display:block;
+		margin-top:2px;
+		line-height:25px;
+		font-size:12px;
+		color:gray;}
+	#header .level{
+		float:left;
+		color:#fff;
+		width:17px;
+		height:17px;
+		line-height:17px;
+		text-align:center;
+		background:#93999f;
+		margin-right:5px;}
+	#header b{
+		color:red;}
+
+/*-----------------下面是盒子的rotate和transition属性结合-------------------*/
+	.box{
+		position:absolute;
+		top:100px;
+		left:2%;
+		width:100px;
+		height:70px;
+		line-height:70px;
+		text-align:center;
+		background:#FFB6C1;
+		font-size:16px;
+		color:#000;
+		border-radius:12px;
+		transform:rotate(0deg);
+		transition:all 1s;}
+	.box:hover{
+		width:160px;
+		height:100px;
+		line-height:100px;
+		background:#1dd388;
+		box-shadow:0 0 30px #282828;
+		transform:rotate(360deg);}
+/*-----------------下面是京东右侧固定的transition属性效果-------------------*/
+	#main{width:100px;height:160px;/* background:#ccc; */position:fixed;top:200px;right:50px;}
+	#main .container{position:relative;}
+	#main li{
+		position:absolute;
+		list-style:none;
+		padding:9px;
+		font-size:12px;
+		color:#fff;
+		background:#7a6e6e;
+		border-radius:4px;
+		transition:all 300ms ease-in;}
+	#main .l1{top:1px;right:0;}
+	#main .l2{top:41px;right:0;}
+	#main .l3{top:81px;right:0;}
+	#main .l4{top:121px;right:0;}
+	#main li:hover{background:brown;}
+	#main li:hover span{width:55px;padding-right:5px;}
+	#main li span{
+		transition:all 300ms ease-in;
+		width:0;display:inline-block;white-space:nowrap;overflow:hidden;}
+	#main li .iconfont{width:18px;font-size:18px;}
+/*-----------------下面是css3动画音乐播放效果-------------------*/	
+	.animate{width:100px;height:50px;list-style: none;position:absolute;top:50%;left:3%}
+			.animate li{width:12px;background:orangered;position: absolute;}
+			.animate li:nth-of-type(1){height:25%;bottom:0;left:0;animation:one 0.7s infinite;}
+			.animate li:nth-of-type(2){height:50%;bottom:0;left:13px;animation:two 0.8s infinite;}
+			.animate li:nth-of-type(3){height:75%;bottom:0;left:26px;animation:three 0.8s infinite;}
+			.animate li:nth-of-type(4){height:100%;bottom:0;left:40px;animation:four 0.7s infinite;}
+			@keyframes one{
+				0%{height:25%}
+				50%{height:100%}
+				100%{height:25%}
+			}
+			@keyframes two{
+				0%{height:50%}
+				50%{height:75%}
+				100%{height:50%}
+			}
+			@keyframes three{
+				0%{height:75%}
+				50%{height:50%}
+				100%{height:75%}
+			}
+			@keyframes four{
+				0%{height:100%}
+				50%{height:25%}
+				100%{height:100%}
+			}
+  </style>
+ </head>
+ <body>
+	<ul id="header">
+		<li class="li_1">
+			<div class="cont">
+				<p>
+					<span class="level">中</span>6小时用jQuery实现小应用<span>搭建一个清单应用，一次性掌握jQuery核心功能和使用技巧</span>
+				</p>
+				<span><b>132251</b>人在学</span>
+			</div>
+		</li>
+		<li class="li_2">
+			<div class="cont">
+				<p>
+					<span class="level">高</span>Python高级编程技巧实战<span>精选50个python训练任务。提升实战技能与高效编程技巧</span>
+				</p>
+				<span><b>174973</b>人在学</span>
+			</div>
+		</li>
+		<li class="li_3">
+			<div class="cont">
+				<p>
+					<span class="level">高</span>Larave和AngularJS开发全栈知乎<span>前端AngularJS，后端Larave技术，全栈开发一个您自己的“知乎”</span>
+				</p>
+				<span><b>75977人</b>在学</span>
+			</div>
+		</li>
+		<!--此处是分割线-------->
+		<li class="li_0">
+			<div class="cont">
+				<p>
+					<span class="level">初</span>零基础HTML+CSS系统学习班<span>Web前端开发最基础知识，从标签语义化到HTML与CSS分离，从项目到实战...</span>
+				</p>
+				<span><b>HTML学习</b> 132251人在学</span>
+			</div>
+		</li>
+		<li class="li_0">
+			<div class="cont">
+				<p>
+					<span class="level">中</span>Javascript/JQuery中级班<span>JavaScript是世界上最流行的编程语言；这门语言可用于HTML和web，服务器PC...</span>
+				</p>
+				<span><b>JQuery学习</b> 174973人在学</span>
+			</div>
+		</li>
+		<li class="li_0">
+			<div class="cont">
+				<p>
+					<span class="level">高</span>Web前端软件工程师高级进阶班-Nodejs实战开发<span> Node.js是一个基于Chrome JavaScript运行时建立的平台...</span>
+				</p>
+				<span><b>Node学习</b> 75977人在学</span>
+			</div>
+		</li>
+	</ul>
+	<!--此处是分割线-------->
+	<div class="box">css过渡特效</div>
+	<!--此处是分割线-------->
+	<div id="main">
+		<ul class="container">
+			<li class="l1"><span>京东会员</span><i class="iconfont">&#xe63a;</i></li>
+			<li class="l2"><span>购物车</span><i class="iconfont">&#xe612;</i></li>
+			<li class="l3"><span>优惠券</span><i class="iconfont">&#xe641;</i></li>
+			<li class="l4"><span>我的关注</span><i class="iconfont">&#xe610;</i></li>
+		</ul>
+	</div>
+	<!--此处是分割线-------->
+	<ul class="animate">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+ </body>
+</html>

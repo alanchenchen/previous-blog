@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品选择器</title>
+	<style type="text/css">
+		/*::-webkit-scrollbar{width: 0;}*/
+		/*设置滚动条样式*/
+		::-webkit-scrollbar {
+		  width: 9px;
+		  height: 9px;
+		}
+		::-webkit-scrollbar-track-piece:no-button {}
+		::-webkit-scrollbar-thumb {
+		  background-color: #3994EF;
+		  border-radius: 3px;
+		}
+		::-webkit-scrollbar-thumb:active {
+		  background-color:#0566a9;
+		}
+		::-webkit-scrollbar-button:vertical { width: 9px; }
+		::-webkit-scrollbar-button:horizontal { width: 9px; }
+		*{ padding: 0; margin: 0; font-family: "Microsoft yahei";}
+		li{list-style-type: none;}
+		body{ background: #000000;}
+		.boxDom{ width: 870px; padding: 20px; background:#000; margin: 0 auto;  }
+		h2{ color: #fff; font-size: 22px; font-weight: 100; }
+		.selcets li,.choose li{ display: inline-block;margin: 10px; cursor: pointer; }
+		.selcets li div,.choose li div
+		{ width: 98px; height: 98px; border:1px solid #fff; position: relative;}
+		
+		.selcets li.check p{ background: url(images/ok.png) no-repeat rgba(0,0,0,0.5) center;}
+		.choose li div:hover p{ background: url(images/no.png) no-repeat rgba(0,0,0,0.5) center;}
+		.selcets li div p,.choose li div p
+		{width: 100%; height: 100%; position: absolute; left: 0; top: 0;}
+		
+		.selcets li span,.choose li span{ display: block; text-align: center; height: 30px; line-height: 30px; color: #fff; font-size: 14px; }
+		.line{text-align:right;border-bottom: 2px solid #fff; padding-bottom: 10px; margin-bottom: 10px;}
+		#sure{ color: #fff; display: inline-block; width: 120px; text-align: center; height: 30px; line-height: 30px; background: #7b7b7b; border-radius:3px; text-decoration: none; }
+
+	</style>
+</head>
+<body>
+<div class="boxDom">
+	<div class="good">
+		<h2>请选择商品</h2>
+		<ul class="selcets" id="shop">
+			<li>
+				<div>
+					<img src="images/01.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>赤西仁</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/02.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>徐良</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/03.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>Sistar</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/04.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>疯狂原始人</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/05.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>红-冯建宇</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/06.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>惊天魔盗团</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/07.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>植物大战僵尸</span>
+			</li>
+			<li>
+				<div>
+					<img src="images/08.png" width="98" height="98">
+					<p></p>
+				</div>
+				<span>熊出没</span>
+			</li>
+		</ul>
+		<div class="line">
+			<a href="javascript:;" id="sure">确定添加</a>				
+		</div>
+	</div>
+	<div>
+		<h2>已选择商品</h2>
+		<ul class="choose" id="noShop">
+			
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id)
+	}
+	var shop=$("shop");
+	var noShop=$("noShop");
+	var li=shop.children;
+	var sure=$("sure");
+	var liarr=[];//用一个空数组来接受每次添加的li，来判断是否重复添加
+	var cloneDom=[];
+	for(var i=0;i<li.length;i++){
+		li[i].onclick=function(){
+			if(this.className.indexOf("check")!=-1){
+				this.className="";					
+			}
+			else{
+				this.className="check";					
+			}
+		}
+	}
+	/*
+		知识点1：解决如何appendChild所有的被选中的li--必须将类数组转换成数组，可以用for循环一一push。也可以用原型链
+		知识点2：解决添加li，而不使本身li消失--必须克隆本身，将cloneNode(true)添加到noShop里
+		知识点3：解决如何判断是否重复添加和删除后能否添加li--必须要用一个空数组来接受sure点击后的添加之后的所有被选中的li，数组中只要存在，就判断是否重复，重复的不执行，而在删除li的同时也要将数组中对应下标的li删除掉。否则无法再次添加。
+		注意：liarr本身是个开关！用来监测shop和noShopli是否重复！而cloneDom是因为clone后的元素并不是liarr的，不能从liarr里删除！
+	*/
+	sure.onclick=function(){
+		//类数组除了length属性，其余操作都不行
+		var check=shop.getElementsByClassName("check");//得到所有类名为check的li
+		var arrCheckDom = Array.prototype.slice.call(check);//将类数组变成数组，才能使用节点操作
+		for(var i=0;i<arrCheckDom.length;i++){
+			arrCheckDom[i].className="";//点击时将所有样式清除
+			if(liarr.indexOf(arrCheckDom[i])==-1){//当liarr数组里面没有被选中的li，才执行，若已存在li，不执行。
+				liarr.push(arrCheckDom[i]);//将数组中没有的lipush进去
+				var clone=arrCheckDom[i].cloneNode(true);//克隆的节点只能是单个元素，不能是集合
+				clone.setAttribute("onclick","delMe(this)");//点击添加的同时绑定函数，是因为页面加载完成，noShop子元素永远为0个
+				noShop.appendChild(clone);//如果不克隆。将会使数组的li被剪切到noShop。shop里的li会消失！
+				cloneDom.push(clone);//用另一个数组来接收。是因为克隆后与之前的元素不是同一个				
+			}
+		}
+	};
+	function delMe(obj){
+		var i=cloneDom.indexOf(obj);//所以这里只能在cloneDom里找对应下标，obj是cloneDom里的元素而不是liarr的，liarr的元素是arrCheckDom[i]
+		liarr.splice(i,1);//删除元素li的同时，将liarr里对应的arrCheckDom[i]也删除掉，避免下次添加时无法添加
+		cloneDom.splice(i,1);
+		obj.parentNode.removeChild(obj);
+	}
+</script>
+</body>
+</html>

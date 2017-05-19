@@ -1,0 +1,15 @@
+.demoList{width:100%;}
+.d_item{width:14rem;height:20rem;box-shadow:0 0 30px #ddd;border-radius:13px;margin:30px 3rem 0 0;background-image:url(../demo/images/title.png);}
+.d_item:hover{box-shadow:0 0 30px #999;transform: translate(0,-15px)}
+.d_item:hover p{height:5rem;line-height:5rem;}
+.d_item a{display: block;width:100%;height:100%;}
+.d_item p{position: absolute;bottom:0;left:0;right:0;height:0;line-height:5rem;border-radius:13px 0;background:#FF6709;color:#fff;}
+.d_item:nth-of-type(3n){margin-right:0;}
+.d_item:nth-of-type(1){background-position-y:-2544px ;}
+.d_item:nth-of-type(2){background-position-y:-2226px ;}
+.d_item:nth-of-type(3){background-position-y:-1908px ;}
+.d_item:nth-of-type(4){background-position-y:-1590px;}
+.d_item:nth-of-type(5){background-position-y:-1272px;}
+.d_item:nth-of-type(6){background-position-y:-954px ;}
+.d_item:nth-of-type(7){background-position-y:-636px ;}
+.d_item:nth-of-type(8){background-position-y:-318px ;}

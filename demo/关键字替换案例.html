@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>关键字替换案例</title>
+		<style>
+			*{padding:0;margin:0}
+			.cont{width:600px;margin:50px auto;}
+			#txt{width:260px;height:30px;text-indent:2em;border:1px solid #000;}
+			#btn{margin-left:40px;width:200px;height:34px;}
+			p{border:2px solid #000;margin-top:20px;width:90%;padding:20px;line-height:30px;color:#333;text-indent:2em;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div class="search">
+				<input id="txt" type="text" placeholder="请输入要标记的关键词" />
+				<input id="btn" type="button" value="关键字会实时查找，无需点击" />
+			</div>
+			<p id="pDom">
+				橙子里面还有丰富的维生素，如果长期食用，可以起到防癌的作用，橙子能清除体内对健康有害的自由基，抑制肿瘤细胞的生长。
+				所有的水果中，柑橘类所含的抗氧化物质最高，包括60多种黄酮类和17种类胡萝卜素。黄酮类物质具有抗炎症、强化血管和抑制凝血的作用。类胡萝卜素具有很强的抗氧化功效。
+				这些成分使橙子对多种癌症的发生有抑制作用。橙子中的维生素C含量很高，一直都是很多人爱吃的水果。但对于女性来说，多吃橙子还有一个令她们意想不到的好处，就是减少胆结石的发病率。营养价值：橙子具有宽肠、理气、化痰、消食、开胃、止呕、止痛、止咳等功效，可用于治疗胸闷、腹胀、呕吐、便秘、小便不畅、痔疮出血，解酒、鱼、蟹毒等。橙子富含多种有机酸、维生素，可调节人体新陈代谢，尤其对老年人及心血管病患者十分有益。橙皮中含有果酸，可促进食欲，对胃酸不足的人可帮助消化。橙子中的纤维素可帮助通便并降低胆固醇。橙子中含丰富的维生素C，有防癌作用。
+			</p>
+		</div>
+		<script type="text/javascript">
+			var txt=document.getElementById("txt");
+			var btn=document.getElementById("btn");
+			var pDom=document.getElementById("pDom");
+			var pTxt=pDom.innerHTML;
+			txt.onkeyup=function(){
+				var val=txt.value;
+				var nVal="<b style='color:red;'>"+val+"</b>";
+				//第一种方法，用字符串自带的replace()方法将val替换成带标签的nVal
+				//注意replace方法中的第一个参数，如果为字符串或变量，只会替换第一个被匹配的字符串，若想全局替换，需要用正则表达式
+				//而正则表达式写法为/value/g，value只会被当作字符串处理，如果想用变量，需要new一个正则对象，传入参数
+//				var reg="/"+val+"/g";//g表示全局匹配
+				//或者用字符串将变量拼接，然后用eval()方法转换！！
+//				var nTxt=pTxt.replace(eval(reg),nVal);
+//				pDom.innerHTML=nTxt;
+				//第二种方法，用val为标准将字符串切割成数组，再用改变后的nVal为标准将数组转换成新字符串输出
+				var arr=pTxt.split(val)	;
+				var nArr=arr.join(nVal);
+				pDom.innerHTML=nArr;
+				if(!val)alert("请输入关键字")
+			}
+		</script>
+	</body>
+</html>
