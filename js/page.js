@@ -10,13 +10,15 @@ define(['common'],function(common){
 			var nowTime=new Date().getTime();
 			var nextDate=new Date().getDate()+1;
 			var theMonth=new Date().getMonth()+1;
+			var theYear=new Date().getFullYear();
+			var nextYear=theYear+1;
 			//定义一个时间戳，自动获取当前时间的后一天的0点0分
-			var tomorrow=new Date("2017/"+theMonth+"/"+nextDate);
+			var tomorrow=new Date(theYear+"/"+theMonth+"/"+nextDate);
 			//自动计算后一天0点0分到此刻的时间差，作为定时器的间隔时间，优化网页性能。
 			interval=(+tomorrow)-nowTime;
 			console.log(new Date()+"===="+tomorrow);
-			var thisYear=new Date("2017/1/1").getTime();
-			var nextYear=new Date("2018/1/1").getTime();
+			var thisYear=new Date(theYear+"/1/1").getTime();
+			var nextYear=new Date(nextYear+"/1/1").getTime();
 			var lineNum=(((nowTime-thisYear)/(nextYear-thisYear))*100).toPrecision(2);
 			h_r_num.innerHTML=lineNum+"%";
 			h_r_slideline.style.width=lineNum+"%";
